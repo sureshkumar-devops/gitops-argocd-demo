@@ -16,4 +16,4 @@
 #         - alias: "gitops-img"
 #           imageName: lehardocker/gitops-app
 #           commonUpdateSettings:
-#             updateStrategy: newest-build
+#             updateStrategy: semver
