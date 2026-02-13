@@ -1,15 +1,19 @@
-# apiVersion: argocd-image-updater.argoproj.io/v1alpha1
-# kind: ImageUpdater
-# metadata:
-#   name: gitops-app
-#   namespace: argocd
-# spec:
-#   image:
-#     name: lehardocker/gitops-app
-#     updateStrategy: newest-build
-#     allowTags: "regexp:^([a-f0-9]{7,40})$"
-#   applicationRef:
-#     name: gitops-app
-#   git:
-#     branch: master
-#     writeBackMethod: git
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: gitops-app
+  namespace: argocd
+spec:
+  writeBackConfig:
+    method: git
+    gitConfig:
+      branch: master           # Branch to commit changes to
+      user: "ArgoCD Updater"   # Optional: Commit author name
+      email: "updater@example.com" # Optional: Commit author email
+  applicationRefs:
+    - name: gitops-app          # Reference to the Argo CD Application
+      images:
+        - alias: "gitops-img"
+          imageName: lehardocker/gitops-app
+          commonUpdateSettings:
+            updateStrategy: semver
