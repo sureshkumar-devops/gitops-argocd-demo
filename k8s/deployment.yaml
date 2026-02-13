@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: gitops-app-cont
-          image: lehardocker/gitops-app: 37592da
+          image: lehardocker/gitops-app:37592da
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
