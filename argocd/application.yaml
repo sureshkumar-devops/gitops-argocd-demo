@@ -7,6 +7,7 @@ metadata:
     argocd-image-updater.argoproj.io/image-list: gitops-img=lehardocker/gitops-app
     argocd-image-updater.argoproj.io/gitops-img.update-strategy: semver
     argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/git-branch: master
 spec:
   project: default
   source:

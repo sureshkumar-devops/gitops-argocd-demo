@@ -1,1 +1,15 @@
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/config/install.yaml
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: gitops-app
+  namespace: argocd
+spec:
+  image:
+    name: lehardocker/gitops-app
+    updateStrategy: newest-build
+    allowTags: "regexp:^([a-f0-9]{7,40})$"
+  applicationRef:
+    name: gitops-app
+  git:
+    branch: master
+    writeBackMethod: git
