@@ -14,7 +14,7 @@ kubectl get pods -n argocd
 # Accessing the Argo CD UI
 
 # Port-forward the Argo CD server service:
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+kubectl port-forward svc/argocd-server -n argocd 8888:443
 
 # Retrieve the initial admin password
 
