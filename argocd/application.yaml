@@ -5,12 +5,16 @@ metadata:
   namespace: argocd
   annotations: 
     #argocd-image-updater.argoproj.io/image-list: gitops-app=lehardocker/gitops-app:v1.0.1  
-    #argocd-image-updater.argoproj.io/gitops-app.update-strategy: newest-build
-    argocd-image-updater.argoproj.io/image-list: gitops-app=lehardocker/gitops-app:d3200a3
+    #argocd-image-updater.argoproj.io/gitops-app.update-strategy: newest-build    
+    #argocd-image-updater.argoproj.io/git-commit-message: "chore: update image to {{ .NewTag }}"  
+
+    argocd-image-updater.argoproj.io/image-list: gitops-app=lehardocker/gitops-app
     argocd-image-updater.argoproj.io/git-branch: master
-    argocd-image-updater.argoproj.io/write-back-method: git
-    argocd-image-updater.argoproj.io/update-strategy: newest-build
-    argocd-image-updater.argoproj.io/git-commit-message: "chore: update image to {{ .NewTag }}"  
+    argocd-image-updater.argoproj.io/write-back-method: git    
+    argocd-image-updater.argoproj.io/gitops-app.update-strategy: semver
+    argocd-image-updater.argoproj.io/gitops-app.allow-tags: regexp:^v.*
+    
+    
 spec:
   project: default
   source:
